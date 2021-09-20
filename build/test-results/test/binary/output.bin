@@ -1,28 +1,28 @@
-Request method:	GET
-[Request URI:	https://restful-booker.herokuapp.com/booking?firstname=Jim&lastname=Ericsson
+Request method:	PATCH
+>Request URI:	https://restful-booker.herokuapp.com/booking/56
 Proxy:			<none>
 Request params:	<none>
-Query params:	firstname=Jim
-				lastname=Ericsson
+Query params:	<none>
 Form params:	<none>
 Path params:	<none>
-Headers:		Accept=*/*
+8Headers:		Authorization=Basic YWRtaW46cGFzc3dvcmQxMjM=
+				Accept=*/*
 #				Content-Type=application/json
 Cookies:		<none>
 Multiparts:		<none>
-Body:			<none>
-HTTP/1.1 200 OK
+Body:
+{
+    "firstname": "James",
+    "lastname": "Brown"
+}
+!HTTP/1.1 405 Method Not Allowed
 Server: Cowboy
 Connection: keep-alive
 X-Powered-By: Express
-/Content-Type: application/json; charset=utf-8
-Content-Length: 17
-*Etag: W/"11-EFXkLaddCQy66Nf3JXQFGRXrkYY"
-%Date: Mon, 20 Sep 2021 01:33:28 GMT
+)Content-Type: text/plain; charset=utf-8
+Content-Length: 18
+*Etag: W/"12-UGJMK66P4abaBlq0vKHJaCKuGCA"
+%Date: Mon, 20 Sep 2021 16:06:27 GMT
 Via: 1.1 vegur
 
-[
-    {
-        "bookingid": 3
-    }
-]
+Method Not Allowed

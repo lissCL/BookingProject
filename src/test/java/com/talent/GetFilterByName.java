@@ -23,15 +23,17 @@ public class GetFilterByName {
 
         String apiURL = RestAssured.baseURI + "/booking";
         given()
-                .queryParam("firstname","Jim")
-                .queryParam("lastname","Ericsson")
+                .queryParam("firstname","Mary")
+                .queryParam("lastname","Smith")
         .when()
                 .get(apiURL)
 
         .then()
                 //verificando el status code
                 .statusCode(HttpStatus.SC_OK)
-                .body("[0].bookingid",equalTo(3));
+                .body("[0].bookingid",equalTo(3))
+                //validando el contentType
+                .contentType(equalTo("application/json; charset=utf-8"));
 
     }
 

@@ -31,7 +31,10 @@ public class PatchBooking {
                 .patch("/booking/1")
         .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_OK)
+                //validando respuesta
+                .contentType(equalTo("application/json; charset=utf-8"))
+                .body("totalprice",equalTo(838));
 
     }
     @Test
@@ -44,10 +47,10 @@ public class PatchBooking {
                         "}")
                 .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQxMjM=")
                 .when()
-                .patch("/booking/32")
+                .patch("/booking/56")
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_METHOD_NOT_ALLOWED);
+                .statusCode(HttpStatus.SC_NOT_FOUND);
 
     }
 
@@ -63,7 +66,8 @@ public class PatchBooking {
                    .patch("/booking/1")
                    .then()
                    .assertThat()
-                   .statusCode(HttpStatus.SC_FORBIDDEN);
+                   .statusCode(HttpStatus.SC_FORBIDDEN)
+                   .contentType(equalTo("text/plain; charset=utf-8"));
 
        }
 }
