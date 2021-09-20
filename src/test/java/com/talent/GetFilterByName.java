@@ -21,8 +21,13 @@ public class GetFilterByName {
     @Test
     public void filterName(){
 
+        String apiURL = RestAssured.baseURI + "/booking";
         given()
-                .get("/booking?firstname=Jim&lastname=Ericsson")
+                .queryParam("firstname","Jim")
+                .queryParam("lastname","Ericsson")
+        .when()
+                .get(apiURL)
+
         .then()
                 //verificando el status code
                 .statusCode(HttpStatus.SC_OK)
@@ -30,5 +35,4 @@ public class GetFilterByName {
 
     }
 
-    //.param("id",getFirstIdBooking())
 }
