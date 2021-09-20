@@ -99,6 +99,10 @@ public class RestfulBooker extends BaseApi {
         //if the booking was deleted should pass the next assert
         Assert.assertEquals(getResponse(id),"Not Found");
 
+
+
+
+
     }
 
 

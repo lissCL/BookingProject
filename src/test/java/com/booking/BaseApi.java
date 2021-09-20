@@ -7,10 +7,11 @@ import org.testng.annotations.BeforeClass;
 
 
 public abstract class BaseApi{
+    String response;
     @BeforeClass
     public static void setUp(){
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+        //RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     public String getToken(){
@@ -29,8 +30,9 @@ public abstract class BaseApi{
     }
 
     public String getResponse(int id){
-        String response= RestAssured.given().get("/booking/"+id).asString();
-        return response;
+
+        return response= RestAssured.given().get("/booking/"+id).asString();
+
     }
 
 
