@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 
 
 public abstract class BaseApi{
+
     @BeforeClass
     public static void setUp(){
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
@@ -32,6 +33,4 @@ public abstract class BaseApi{
         String response= RestAssured.given().get("/booking/"+id).asString();
         return response;
     }
-
-
-}
+ }
