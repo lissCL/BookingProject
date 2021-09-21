@@ -8,11 +8,6 @@ import io.restassured.http.Cookie;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 
-import static io.restassured.RestAssured.basic;
-
-
-public abstract class BaseApi {
-
 public abstract class BaseApi {
     @BeforeClass
     public static void setUp() {
