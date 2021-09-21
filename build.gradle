@@ -24,6 +24,7 @@ dependencies {
     testImplementation 'io.rest-assured:json-path:4.4.0'
     testImplementation 'io.rest-assured:xml-path:4.4.0'
     testImplementation 'io.rest-assured:json-schema-validator:4.4.0'
+    testImplementation 'org.junit.platform:junit-platform-commons:1.5.2'
     // testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
     //  testImplementation 'org.codehaus.groovy:groovy-all:2.4.13'
     testRuntimeOnly 'junit:junit:4.13.2'
@@ -39,4 +40,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
 }
