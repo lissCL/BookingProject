@@ -1,6 +1,7 @@
 package com.booking;
 
 
+import com.booking.setup.BaseApi;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 

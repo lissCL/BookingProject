@@ -1,5 +1,7 @@
 package com.booking;
 
+import com.booking.model.Booking;
+import com.booking.setup.BaseApi;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 
@@ -19,7 +21,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class RestfulBooker extends BaseApi {
     //instance responsePu to use in all methods
-    static ResponsePut responsePut = new ResponsePut();
+    static Booking responsePut = new Booking();
 
 //    @Test
 //    public void createToken(){
@@ -177,17 +179,17 @@ public class RestfulBooker extends BaseApi {
     //TODO PUT Update Booking -- basic auth
     @Test
     public void updateBookingGetBasicAtuh() {
-        ResponsePut requestPut = given()
+        Booking requestPut = given()
                 .auth()
                 .preemptive()
                 .basic("admin", "password123")
                 .when()
                 .get("/booking/2")
-                .as(ResponsePut.class);
+                .as(Booking.class);
 
         requestPut.setAdditionalneeds("desayuno 1.0");
 
-        ResponsePut responseAdditionalNeeds =
+        Booking responseAdditionalNeeds =
                 given()
                         .auth()
                         .preemptive()
@@ -199,7 +201,7 @@ public class RestfulBooker extends BaseApi {
                         .contentType(equalTo("application/json; charset=utf-8"))
                         .extract()
                         .body()
-                        .as(ResponsePut.class);
+                        .as(Booking.class);
         System.out.println("this is a test");
         assertThat(responseAdditionalNeeds.getAdditionalneeds(), equalTo("desayuno 1.0"));
     }
