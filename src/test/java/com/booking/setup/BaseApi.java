@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public abstract class BaseApi {
@@ -44,13 +45,5 @@ public abstract class BaseApi {
         return token;
     }
 
-    public int getFirstIdBooking() {
-        String bookingId = RestAssured.given().get("/booking").path("[0].bookingid").toString();
-        return Integer.parseInt(bookingId);
-    }
 
-    public String getResponse(int id) {
-        String response = RestAssured.given().get("/booking/" + id).asString();
-        return response;
-    }
 }
