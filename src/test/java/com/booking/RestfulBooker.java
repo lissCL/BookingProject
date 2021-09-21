@@ -4,9 +4,11 @@ import io.restassured.http.ContentType;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,10 +16,13 @@ import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class RestfulBooker extends BaseApi {
+    //instance responsePu to use in all methods
+    static ResponsePut responsePut = new ResponsePut();
 
 //    @Test
 //    public void createToken(){
@@ -38,31 +43,32 @@ public class RestfulBooker extends BaseApi {
 //    }
 
     @Test
-    public void GetBooking(){
-        String response= given().get("/booking").path("[0].bookingid").toString();
+    public void GetBooking() {
+        String response = given().get("/booking").path("[0].bookingid").toString();
         given()
                 .get("/booking/")
                 .then()
                 .assertThat()
                 .header("Content-Type", "application/json; charset=utf-8")
                 .statusCode(HttpStatus.SC_OK)
-                .body("[0].bookingid",equalTo(6));
+                .body("[0].bookingid", equalTo(6));
         System.out.println(response);
     }
+
     @Test
-    public void getBookingId(){
+    public void getBookingId() {
         given()
 
-                .get("/booking/"+getFirstIdBooking())
+                .get("/booking/" + getFirstIdBooking())
                 .then()
                 .assertThat()
                 .header("Content-Type", "application/json; charset=utf-8")
                 .statusCode(HttpStatus.SC_OK);
-                //.body("[0].bookingid",equalTo(6))
+        //.body("[0].bookingid",equalTo(6))
     }
 
     @Test
-    public void createBooking(){
+    public void createBooking() {
 
         given()
 
@@ -88,32 +94,45 @@ public class RestfulBooker extends BaseApi {
     }
 
     @Test(testName = "deleteBooking")
-    public void deleteBooking(){
-        int id= getFirstIdBooking();
+    public void deleteBooking() {
+        int id = getFirstIdBooking();
         //if the booking exist should pass the next
         getBookingId();
         //deleted a booking ID
         given()
-               .header("Cookie","token="+getToken())
-               //.param("id",getFirstIdBooking())
-               .when()
-               .delete("/booking/"+id)
-               .then()
-               .statusCode(HttpStatus.SC_CREATED);
+                .header("Cookie", "token=" + getToken())
+                //.param("id",getFirstIdBooking())
+                .when()
+                .delete("/booking/" + id)
+                .then()
+                .statusCode(HttpStatus.SC_CREATED);
 
         //if the booking was deleted should pass the next assert
-        Assert.assertEquals(getResponse(id),"Not Found");
+        Assert.assertEquals(getResponse(id), "Not Found");
 
     }
+
     //TODO CRISTHIAN - METHOD GET - GET BOOKIN BY ID
     @Test
     public void getBookingsId() {
+
+        responsePut.setFirstname("Jim");
+        responsePut.setLastname("Wilson");
+        responsePut.setTotalprice(785);
+
         given()
                 .when()
                 .get("/booking/2")
                 .then()
                 .statusCode(HttpStatus.SC_OK)
-                .body("bookingdates.checkin", equalTo("2020-11-04"));
+                .body("firstname", containsString(""))
+                .body("lastname", containsString(""))
+                .body("bookingdates.checkin", is(""))
+                .body("bookingdates.checkout", is(""));
+
+        assertThat(responsePut.getFirstname(), is(""));
+        assertThat(responsePut.getTotalprice(), is(785));
+        assertThat(responsePut.getLastname(), is("Wilson"));
     }
 
     //TODO get booking by ID -- in progress TEST2---> ID doesnt exist
@@ -160,7 +179,7 @@ public class RestfulBooker extends BaseApi {
 
     //TODO PUT Update Booking -- basic auth
     @Test
-    public void updateBookinggetBasicAtuh() {
+    public void updateBookingGetBasicAtuh() {
         ResponsePut requestPut = given()
                 .auth()
                 .preemptive()
@@ -184,8 +203,8 @@ public class RestfulBooker extends BaseApi {
                         .extract()
                         .body()
                         .as(ResponsePut.class);
-//
-//        assertThat(responseAdditionalNeeds.getAdditionalneeds(), equalTo("desayuno"));
+        System.out.println("this is a test");
+        assertThat(responseAdditionalNeeds.getAdditionalneeds(), equalTo("desayuno 1.0"));
     }
 
     //TODO PUT Update Booking -- Token

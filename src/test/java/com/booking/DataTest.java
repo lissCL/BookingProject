@@ -20,7 +20,7 @@ public class DataTest extends BaseApi{
                 .body("bookingdates.checkin", equalTo("2020-11-04"));
     }
 
-    //TODO get booking by ID -- in progress TEST2---> ID doesnt exist
+    //TODO Cristhian get booking by ID -- in progress TEST2---> ID doesnt exist
 
     @Test
     public void getBookingsId2() {
