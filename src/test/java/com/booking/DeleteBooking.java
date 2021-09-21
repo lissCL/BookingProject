@@ -16,7 +16,11 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
 
 public class DeleteBooking extends BaseApi{
+    int countBooking;
 
+    public int getCountBooking() {
+        return countBooking;
+    }
     @Test
     public void getBookings(){
         //String bookingId= given().get("/booking").path("[0].bookingid").toString();
@@ -39,7 +43,7 @@ public class DeleteBooking extends BaseApi{
 
        // int statusResponse= given().get("/booking").then().extract().statusCode();
         String responseBooking= given().get("/booking").then().extract().body().asString();
-        int countBooking= from(responseBooking).getList("bookingid").size();
+        countBooking= from(responseBooking).getList("bookingid").size();
         List<Integer> bookingMapint= from(responseBooking).getList("bookingid");
         System.out.println("--------bookingMapint---------");
         System.out.println(countBooking);
@@ -48,6 +52,7 @@ public class DeleteBooking extends BaseApi{
         for(Integer element : bookingMapint){
            Assert.assertEquals(getStatusCode(element),HttpStatus.SC_OK);
         }
+
     }
 
 //    public void existBooking(){

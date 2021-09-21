@@ -4,11 +4,12 @@ import io.restassured.RestAssured;
 import io.restassured.filter.log.*;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 
 public abstract class BaseApi{
     String response;
-    @BeforeClass
+    @BeforeTest
     public static void setUp(){
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         //RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
