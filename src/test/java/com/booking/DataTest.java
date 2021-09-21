@@ -1,7 +1,7 @@
 package com.booking;
 
 
-public class DataTest extends BaseApi{
+public class DataTest extends BaseApiRemove {
 
 
 }

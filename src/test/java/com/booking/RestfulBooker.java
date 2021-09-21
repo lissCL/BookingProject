@@ -1,18 +1,16 @@
 package com.booking;
 
 import io.restassured.http.ContentType;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.nio.charset.StandardCharsets;
+
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class RestfulBooker extends BaseApi {
+public class RestfulBooker extends BaseApiRemove {
 
 //    @Test
 //    public void createToken(){

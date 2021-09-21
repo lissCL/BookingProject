@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 
 
-public abstract class BaseApi {
+public  class BaseApiRemove {
     @BeforeClass
     public static void setUp() {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
