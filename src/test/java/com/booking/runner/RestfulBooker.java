@@ -1,18 +1,16 @@
-package com.booking;
+package com.booking.runner;
 
-import com.booking.model.ListBooking;
-import io.restassured.http.ContentType;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
+
+import com.booking.clientapi.DeleteBooking;
+import com.booking.setup.BaseApi;
+import com.booking.setup.Methods;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.nio.charset.StandardCharsets;
+
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
-import static org.hamcrest.Matchers.*;
-import com.booking.*;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class RestfulBooker extends BaseApi {

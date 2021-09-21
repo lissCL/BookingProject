@@ -1,4 +1,4 @@
-package com.booking;
+package com.booking.setup;
 
 import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;

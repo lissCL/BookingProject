@@ -1,21 +1,17 @@
-package com.booking;
+package com.booking.clientapi;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
+import com.booking.setup.BaseApi;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.collections.ListMultiMap;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
 
-public class DeleteBooking extends BaseApi{
+public class DeleteBooking extends BaseApi {
     int countBooking;
 
     public int getCountBooking() {

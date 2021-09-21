@@ -1,14 +1,13 @@
-package com.booking;
+package com.booking.clientapi;
 
+import com.booking.setup.BaseApi;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class GetBooking extends BaseApi{
+public class GetBooking extends BaseApi {
 
 
     @Test(testName = "GetAllBookings")
