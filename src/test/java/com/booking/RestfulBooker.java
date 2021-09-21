@@ -1,15 +1,12 @@
 package com.booking;
 
 import io.restassured.http.ContentType;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

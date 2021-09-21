@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import static io.restassured.RestAssured.basic;
 
 
-public abstract class BaseApi {
+public  class BaseApi {
 
     @BeforeClass
     public static void setUp() {

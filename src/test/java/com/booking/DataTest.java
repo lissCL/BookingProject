@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class DataTest extends BaseApi{
+public class DataTest extends BaseApi {
 
     //TODO CRISTHIAN - METHOD GET - GET BOOKIN BY ID
     @Test
