@@ -1,5 +1,6 @@
 package com.booking.setup;
 
+import com.booking.clientapi.RequestGetBooking;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.*;
@@ -7,6 +8,8 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -16,9 +19,11 @@ public abstract class BaseApi {
     public static final String TOKEN_HEADER = "Token";
     public static final String BOOKING = "/booking/";
     public static final String AUTH = "/auth";
+    public static final Logger logger = LogManager.getLogger(BaseApi.class);
 
     @BeforeClass
     public static void setUp() {
+        logger.info("setUp");
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 //        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
 
