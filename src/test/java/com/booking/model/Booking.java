@@ -7,100 +7,103 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-		"firstname",
-		"lastname",
-		"totalprice",
-		"depositpaid",
-		"bookingdates",
-		"additionalneeds"
+        "firstname",
+        "lastname",
+        "totalprice",
+        "depositpaid",
+        "bookingdates",
+        "additionalneeds"
 })
 
-public class Booking{
-	@JsonProperty("firstname")
-	private String firstname;
-	@JsonProperty("lastname")
-	private String lastname;
-	@JsonProperty("totalprice")
-	private Integer totalprice;
-	@JsonProperty("depositpaid")
-	private boolean depositpaid;
-	@JsonProperty("bookingdates")
-	private Bookingdates bookingdates;
-	@JsonProperty("additionalneeds")
-	private String additionalneeds;
+public class Booking {
+    @JsonProperty("firstname")
+    private String firstname;
+    @JsonProperty("lastname")
+    private String lastname;
+    @JsonProperty("totalprice")
+    private Integer totalprice;
+    @JsonProperty("depositpaid")
+    private boolean depositpaid;
+    @JsonProperty("bookingdates")
+    private Bookingdates bookingdates;
+    @JsonProperty("additionalneeds")
+    private String additionalneeds;
 
-	public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates_checkin, String bookingdates_checkout, String additionalneeds ) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.totalprice = totalprice;
-		this.depositpaid = depositpaid;
-		this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
-		this.additionalneeds = additionalneeds;
-	}
+    public Booking() {
 
-	public Booking(String bookingdates_checkin, String bookingdates_checkout) {
-		this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
+    }
 
-	}
+    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates_checkin, String bookingdates_checkout, String additionalneeds) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.totalprice = totalprice;
+        this.depositpaid = depositpaid;
+        this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
+        this.additionalneeds = additionalneeds;
+    }
 
-	@JsonProperty("firstname")
-	public String getFirstname() {
-		return firstname;
-	}
+    public Booking(String bookingdates_checkin, String bookingdates_checkout) {
+        this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
+    }
 
-	@JsonProperty("firstname")
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    @JsonProperty("firstname")
+    public String getFirstname() {
+        return firstname;
+    }
+    @JsonProperty("firstname")
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-	@JsonProperty("lastname")
-	public String getLastname() {
-		return lastname;
-	}
+    @JsonProperty("lastname")
+    public String getLastname() {
+        return lastname;
+    }
 
-	@JsonProperty("lastname")
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    @JsonProperty("lastname")
 
-	@JsonProperty("totalprice")
-	public Integer getTotalprice() {
-		return totalprice;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	@JsonProperty("totalprice")
-	public void setTotalprice(Integer totalprice) {
-		this.totalprice = totalprice;
-	}
+    @JsonProperty("totalprice")
+    public Integer getTotalprice() {
+        return totalprice;
+    }
 
-	@JsonProperty("depositpaid")
-	public boolean getDepositpaid() {
-		return depositpaid;
-	}
+    @JsonProperty("totalprice")
+    public void setTotalprice(Integer totalprice) {
+        this.totalprice = totalprice;
+    }
 
-	@JsonProperty("depositpaid")
-	public void setDepositpaid(boolean depositpaid) {
-		this.depositpaid = depositpaid;
-	}
+    @JsonProperty("depositpaid")
+    public boolean getDepositpaid() {
+        return depositpaid;
+    }
 
-	@JsonProperty("bookingdates")
-	public Bookingdates getBookingdates() {
-		return bookingdates;
-	}
+    @JsonProperty("depositpaid")
+    public void setDepositpaid(boolean depositpaid) {
+        this.depositpaid = depositpaid;
+    }
 
-	@JsonProperty("bookingdates")
-	public void setBookingdates(Bookingdates bookingdates) {
-		this.bookingdates = bookingdates;
-	}
+    @JsonProperty("bookingdates")
+    public Bookingdates getBookingdates() {
+        return bookingdates;
+    }
 
-	@JsonProperty("additionalneeds")
-	public String getAdditionalneeds() {
-		return additionalneeds;
-	}
+    @JsonProperty("bookingdates")
+    public void setBookingdates(Bookingdates bookingdates) {
+        this.bookingdates = bookingdates;
+    }
 
-	@JsonProperty("additionalneeds")
-	public void setAdditionalneeds(String additionalneeds) {
-		this.additionalneeds = additionalneeds;
-	}
+    @JsonProperty("additionalneeds")
+    public String getAdditionalneeds() {
+        return additionalneeds;
+    }
+
+    @JsonProperty("additionalneeds")
+    public void setAdditionalneeds(String additionalneeds) {
+        this.additionalneeds = additionalneeds;
+    }
 
 }
