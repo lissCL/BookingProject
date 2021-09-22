@@ -38,9 +38,13 @@ public class Booking{
 		this.additionalneeds = additionalneeds;
 	}
 
-	public Booking(String bookingdates_checkin, String bookingdates_checkout) {
-		this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
-
+//	public Booking(String bookingdates_checkin, String bookingdates_checkout) {
+//		this.bookingdates = new Bookingdates(bookingdates_checkin, bookingdates_checkout);
+//
+//	}
+	public Booking(String firstname, String lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
 	}
 
 	@JsonProperty("firstname")

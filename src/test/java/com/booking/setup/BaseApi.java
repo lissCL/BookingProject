@@ -7,6 +7,8 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -16,6 +18,7 @@ public abstract class BaseApi {
     public static final String TOKEN_HEADER = "Token";
     public static final String BOOKING = "/booking/";
     public static final String AUTH = "/auth";
+
 
     @BeforeClass
     public static void setUp() {
