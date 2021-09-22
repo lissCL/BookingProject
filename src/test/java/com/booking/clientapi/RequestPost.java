@@ -1,5 +1,6 @@
 package com.booking.clientapi;
 
+import com.booking.data.Data;
 import com.booking.model.Booking;
 import com.booking.setup.BaseApi;
 import io.restassured.RestAssured;
@@ -24,8 +25,14 @@ public class RequestPost extends BaseApi {
     Date convertedDate1 = null;
     Date convertedDate2 = null;
 
+//    Data data = new Data();
+//    Object[][] bookingParameters= data.bookingParameters();
+
+
     @Test(testName = "Create Booking ")
     public void createBooking() {
+
+
         given()
                 .contentType(ContentType.JSON)
                 .body("{\n" +
@@ -50,7 +57,7 @@ public class RequestPost extends BaseApi {
 
     @Test(dataProvider = "bookingParameters")
     public void setBooking(String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates_checkin, String bookingdates_checkout,String additionalneeds, int status) throws ParseException {
-        RestAssured.defaultParser = Parser.JSON;
+        //RestAssured.defaultParser = Parser.JSON;
         System.out.println("\nTest "+Thread.currentThread().getStackTrace()[1].getMethodName()+":\n");
         Booking bookigpost = new Booking(firstname,lastname,totalprice,depositpaid, bookingdates_checkin,bookingdates_checkout,additionalneeds);
 
@@ -62,7 +69,6 @@ public class RequestPost extends BaseApi {
                 .post(BOOKING)
                 .then()
                 .assertThat()
-                //.statusCode(200)
                 .log().all()
                 .body("isEmpty()", Matchers.is(false)).
                 body("booking.firstname", Matchers.equalTo(firstname)).
@@ -85,33 +91,23 @@ public class RequestPost extends BaseApi {
 	*/    }
 
 
-
-
-
     @DataProvider
     public static Object[][] bookingParameters() {
         return new Object[][] {
-//                { "Sally", "Ericsson", 7, true, "1988-05-12", "1754-01-25", "",200 },
-//                { "Sally", "Ericsson", 7, true, "1988-05-12", "1754-01-25", "",200 },
-//                { "Sally", "Ericsson", 7, true, "1988-05-12", "1754-01-25", "",200 },
-//                { "Sally", "Ericsson", 7, true, "1988-05-12", "1754-01-25", "",200 },
-//
-//
-
                 {"Joe",	    "Juarez",   -10,    true,	"2021-10-01",	"2021-10-15",	"Breakfast",400},
                 {"li",	    "juarez",   100,    false,	"2021-10-02",	"2021-10-16",	"all",	    400},
                 {"Joe",	    "Jua",	    200,	true,	"2021-10-03",	"2021-10-17",	"meal",	    200},
                 {"Juana",	"la",	    300,	false,	"2021-10-04",	"2021-10-18",	"drinks",	400},
-                { "",       "perez",	200,	true,"	2021-10-05",	"2021-10-19",	"	"	,   400},
-                {"Juana",   "	"	,   100,	false,	"2021-10-06",	"2021-10-20",		"	",  400},
-                {"Alicia",	"Juarez",	0,	    true,	"2021-10-07",	"2021-10-21",		"	",  400},
+                { "",       "perez",	200,	true,"	2021-10-05",	"2021-10-19",	""	,   400},
+                {"Juana",   "	"	,   100,	false,	"2021-10-06",	"2021-10-20",		"",  400},
+                {"Alicia",	"Juarez",	0,	    true,	"2021-10-07",	"2021-10-21",		"",  400},
                 {"Juana",	"mendoza",	1,	    false,	"2021-10-08",	"2021-10-22",	"Breakfast",200},
-                {"Anahi",	"Cardenaz",	"",    true,	"2021-10-09",	"2021-10-23",	"all",	    400},
+                {"Anahi",	"Cardenaz",	"",     true,	"2021-10-09",	"2021-10-23",	"all",	    400},
                 {"Julio",	"Melendrez",50,	    false,	"2021-10-10",	"2021-10-24",	"meal",	    200},
                 {"Gabriela","Pancha",  "veinte",false,	"2021-10-11",	"2021-10-25",	"drinks",	400},
-                {"Anahi",	"banana",	100,    "	",  "2021-10-05",	"2021-10-19",	"	"	,   400},
-                {"julian",	"perez",	100,	"no",	"2021-10-06",	"2021-10-20",	"	"	,   400},
-                {"Anahi",	"banana",	100,	5,	    "2021-10-07",	"2021-10-21",	"	"	,   400},
+                {"Anahi",	"banana",	100,    "",  "2021-10-05",	"2021-10-19",	""	,   400},
+                {"julian",	"perez",	100,	"no",	"2021-10-06",	"2021-10-20",	""	,   400},
+                {"Anahi",	"banana",	100,	5,	    "2021-10-07",	"2021-10-21",	""	,   400},
                 {"julian",	"perez",	100,	true,	"2021-10-08",	"2021-10-22",	"Breakfast",200},
                 {"Anahi",	"banana",	100,	false,	"2021-10-09",	"2021-10-23",	"all",	    200},
                 {"julian",	"perez",	100,	0,	    "2021-10-10",	"2021-10-24",	"meal",	    200},
@@ -129,5 +125,6 @@ public class RequestPost extends BaseApi {
                 {"julian",	"perez",	100,	true,	"2021-10-09",	"2021-05",	    "	"	,   400},
         };
     }
+
 
 }
