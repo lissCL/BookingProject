@@ -58,7 +58,7 @@ public class RequestPost extends BaseApi {
     @Test(dataProvider = "bookingParameters")
     public void setBooking(String firstname, String lastname, int totalprice, boolean depositpaid, String bookingdates_checkin, String bookingdates_checkout,String additionalneeds, int status) throws ParseException {
         //RestAssured.defaultParser = Parser.JSON;
-        System.out.println("\nTest "+Thread.currentThread().getStackTrace()[1].getMethodName()+":\n");
+        //System.out.println("\nTest "+Thread.currentThread().getStackTrace()[1].getMethodName()+":\n");
         Booking bookigpost = new Booking(firstname,lastname,totalprice,depositpaid, bookingdates_checkin,bookingdates_checkout,additionalneeds);
 
 
