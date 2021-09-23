@@ -9,6 +9,7 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -36,7 +37,7 @@ public class RequestPostAuth extends BaseApi {
                 .body()
                 .as(ResponseAuth.class);
 
-        //assertThat(userResponse.getToken(),equalTo("abc123"));
+        //assertThat(userResponse.getToken(),equalTo(getToken()));
     }
     @Test(testName = "the credentials are wrong")
     public void errorLoginTest (){
@@ -50,10 +51,7 @@ public class RequestPostAuth extends BaseApi {
                 .body(user)
                 .post(AUTH)
                 .then()
-                //verificando el status code
-                //reportar bug
-                .statusCode(200)
-                //.statusCode(HttpStatus.SC_NOT_ACCEPTABLE)
+                .statusCode(HttpStatus.SC_OK)
                 //verificar el mensaje de malas credenciales
                 .body("reason",equalTo("Bad credentials"))
                 .log().all()
@@ -73,8 +71,6 @@ public class RequestPostAuth extends BaseApi {
                 .body(user)
                 .post(AUTH)
                 .then()
-                //verificando el status code
-                //reportar bug
                 .statusCode(HttpStatus.SC_NOT_ACCEPTABLE)
                 //verificar el mensaje de malas credenciales
                 .log().all()

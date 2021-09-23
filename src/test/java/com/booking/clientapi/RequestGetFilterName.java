@@ -15,30 +15,30 @@ public class RequestGetFilterName extends BaseApi{
 
     @Test(testName = "filter a name that exists")
     public void filterName(){
-        String apiURL = RestAssured.baseURI + BOOKING;
+
          given()
                 .queryParam("firstname","Mark")
-                .queryParam("lastname","Brown")
-                .when()
-                .get(apiURL)
-                .then()
-                .statusCode(HttpStatus.SC_OK)
-                 .body("[0].bookingid",notNullValue())
+                .queryParam("lastname","Ericsson")
+         .when()
+                .get(BOOKING)
+         .then()
+                .statusCode(HttpStatus.SC_OK).log().all()
+                 .body("[1].bookingid",notNullValue())
                  .and()
-                 .body("[0].bookingid",equalTo(3))
+                 .body("[1].bookingid",equalTo(3))
                 .contentType(equalTo("application/json; charset=utf-8"));
 
     }
     //
     @Test(testName = "if it doesn't exist, send it empty")
     public void filterNameError(){
-        //String apiURL = RestAssured.baseURI + BOOKING;
+
         given()
                 .queryParam("firstname","Erick")
                 .queryParam("lastname","Brown")
-                .when()
+        .when()
                 .get(BOOKING)
-                .then()
+        .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body("[0].bookingid",emptyOrNullString())
@@ -47,14 +47,14 @@ public class RequestGetFilterName extends BaseApi{
     }
     @Test(testName = "If it does not exist, send not found")
     public void filterNameBug(){
-        String apiURL = RestAssured.baseURI + BOOKING;
+
         given()
                 .queryParam("firstname","Erick")
                 .queryParam("lastname","Brown")
                 .log().all()
-                .when()
-                .get(apiURL)
-                .then()
+        .when()
+                .get(BOOKING)
+        .then()
                 .statusCode(HttpStatus.SC_NOT_FOUND)
                 .log().all()
                 .contentType(equalTo("application/json; charset=utf-8"));
