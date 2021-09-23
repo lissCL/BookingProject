@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class RequestPostAuth extends BaseApi {
 
+
     @Test(testName = "create a user and generate a token")
     public void authUser(){
 
