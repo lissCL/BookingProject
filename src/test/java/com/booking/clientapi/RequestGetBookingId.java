@@ -1,12 +1,7 @@
 package com.booking.clientapi;
 
-import com.booking.model.Booking;
 import com.booking.setup.BaseApi;
-
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.Test;
 
 
@@ -14,8 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class RequestGetBookingId extends BaseApi {
-
-    //TODO get booking by ID -- in progress TEST1
+    //Request GET booking bu Id
     @Test
     public void getBookingsId() {
         given()
@@ -32,12 +26,13 @@ public class RequestGetBookingId extends BaseApi {
                 .body("$", hasKey("bookingdates"));
     }
 
-    //TODO get booking by ID -- in progress TEST2 ID doesnt exist
+    //Request get booking by Id doesnt exist
     @Test
     public void getBookingsId2() {
         given()
                 .get(BOOKING + "100")
                 .then()
                 .statusCode(HttpStatus.SC_NOT_FOUND);
+
     }
 }

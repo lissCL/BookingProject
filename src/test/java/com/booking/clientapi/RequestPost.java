@@ -61,7 +61,6 @@ public class RequestPost extends BaseApi {
         //System.out.println("\nTest "+Thread.currentThread().getStackTrace()[1].getMethodName()+":\n");
         Booking bookigpost = new Booking(firstname,lastname,totalprice,depositpaid, bookingdates_checkin,bookingdates_checkout,additionalneeds);
 
-
         given()
                 .contentType(ContentType.JSON).log().all()
                 .header("Accept", "application/json")

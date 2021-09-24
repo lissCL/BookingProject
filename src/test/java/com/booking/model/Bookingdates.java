@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 		"checkout"
 })
 
-public class Bookingdates{
+public class Bookingdates {
 
 	@JsonProperty("checkin")
 	private String checkin;
@@ -21,7 +21,6 @@ public class Bookingdates{
 		this.checkin = checkin;
 		this.checkout = checkout;
 	}
-
 
 	@JsonProperty("checkin")
 	public String getCheckin() {

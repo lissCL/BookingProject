@@ -2,12 +2,12 @@ package com.booking.setup;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.filter.log.*;
+
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
-import io.restassured.http.Header;
+
 import io.restassured.response.Response;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.BeforeClass;
 
 public abstract class BaseApi {
@@ -44,6 +44,4 @@ public abstract class BaseApi {
         String token = response.path("token");
         return token;
     }
-
-
 }

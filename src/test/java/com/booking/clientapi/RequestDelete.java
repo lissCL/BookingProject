@@ -3,8 +3,6 @@ package com.booking.clientapi;
 import com.booking.setup.Methods;
 import org.apache.http.HttpStatus;
 
-
-
 import static com.booking.setup.Methods.*;
 import static io.restassured.RestAssured.given;
 import com.booking.setup.BaseApi;
@@ -13,7 +11,6 @@ import org.testng.annotations.Test;
 
 
 public class RequestDelete extends BaseApi {
-
 
     @Test(testName = "Delete Booking with Token")
     public void testDeleteBooking(){
